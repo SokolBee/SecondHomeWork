@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.*;
 
-public class firstTask {
+public class FirstTask {
     public static final String SEPARATOR = "\n %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \n";
 
 
