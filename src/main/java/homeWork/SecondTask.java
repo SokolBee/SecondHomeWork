@@ -73,7 +73,7 @@ public class SecondTask {
     //still it looks terrible....
     //
     // the most interesting, I thought since we have to use  .findFirst(); - (to support this pretty tough)
-    // we won't get lots of gain of performance, but I was wrong (on my machine it is relatively equals under heavy load)
+    // we won't get lots of gain of performance using ".parallel()", but I was wrong (on my machine it is relatively equals under heavy load)
     // however despite this fact, the cycle style will be more preferable because
     // we get the same performance on ONE core, and we can leave more resources to
     //other parts of owr application
