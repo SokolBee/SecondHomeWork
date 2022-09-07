@@ -15,9 +15,10 @@ public class SecondTask {
 
     //this the best solution for this task and my main
     static BiConsumer<Integer[], Long> loopsWay = ((longs, stopNumber) -> {
+        if (stopNumber == null) throw new IllegalArgumentException();
         for (Integer l0 : longs) {
             for (Integer l1 : longs) {
-                if (l1 == null) throw new IllegalArgumentException();
+                if (l1 == null) throw new NullPointerException();
                 long pair = l0 + l1;
                 if (pair == stopNumber) {
                     System.out.printf("[%d, %d]", l0, l1);
