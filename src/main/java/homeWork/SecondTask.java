@@ -69,6 +69,7 @@ public class SecondTask {
     }
 
     //but if I had had "stream disease", I would have written something as that =).
+    // I must have had to add it - https://youtu.be/vxikpWnnnCU?t=1679
     // I was trying to optimize it as good as I can
     //still it looks terrible....
     //
