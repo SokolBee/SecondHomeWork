@@ -70,8 +70,15 @@ public class SecondTask {
     //but if I had had "stream disease", I would have written something as that =).
     // I was trying to optimize it as good as I can
     //still it looks terrible....
+    //
+    // the most interesting, I thought since we have to use  .findFirst(); - (to support this pretty tough)
+    // we won't get lots of gain of performance, but I was wrong (on my machine it is relatively equals under heavy load)
+    // however despite this fact, the cycle style will be more preferable because
+    // we get the same performance on ONE core, and we can leave more resources to
+    //other parts of owr application
     static BiConsumer<Integer[], Long> helpMe = ((longs, stopNumber) -> {
         Arrays.stream(longs)
+                .parallel()
                 .filter(Objects::nonNull)
                 .takeWhile(firstPair -> {
                     Optional<Integer> opLong = Arrays.stream(longs)
