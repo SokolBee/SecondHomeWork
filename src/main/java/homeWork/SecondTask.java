@@ -27,11 +27,29 @@ public class SecondTask {
             }
         }
     });
-    
+
+    // this algorithm working faster, but I am not pretty sure can I sort it
+    // and call it "find first" after that
+   static void printPairSums (Integer[] array, Long sum) {
+        Arrays.sort(array);
+        int first = 0;
+        int last = array.length - 1;
+        while (first < last) {
+            long s = array[first] + array[last];
+            if (s == sum) {
+                System.out.printf("[%d, %d]",array[first], array[last]);
+                return;
+            } else {
+                if (s < sum) first++;
+                else last--;
+            }
+        }
+    }
     
     public static void main(String[] args) {
 
         loopsWay.accept(new Integer[]{3, 4, 2, 7}, 10L);
+
 
         //uncomment this code but
         //be careful this "big data" was executing on 8 physical therefore 16 virtual
@@ -39,9 +57,6 @@ public class SecondTask {
 
 //        Integer[] array = bigData();
 //        Long sum = addPair(array);
-//
-//        loopsWay.accept(array, sum);
-//
 //
 //        printFirstPair(new Integer[]{3, 4, 2, 7}, 10L);
 //        printFirstPair(array,sum);
@@ -57,14 +72,23 @@ public class SecondTask {
         System.out.printf("\nTime taken by loopWay: %d", res0);
 
         System.out.println("\n");
+        long start2 = System.nanoTime();
+        System.out.print("SortFirstWay result: ");
+        printPairSums(array,stopSum);
+        long res2 = System.nanoTime() - start2;
+        System.out.println("\nTime taken by SortFirstWay : "+ res2);
+
+        System.out.println("\n");
         long start1 = System.nanoTime();
         System.out.print("streamWay result: ");
         helpMe.accept(array, stopSum);
         long res1 = System.nanoTime() - start1;
         System.out.println("\nTime taken by streamWay: "+ res1);
 
+
+
         long result = res1 / res0;
-        System.out.printf("The cycle is faster in %d times",result);
+        System.out.printf("\nThe cycle is faster in %d times",result);
 
     }
 
@@ -80,7 +104,7 @@ public class SecondTask {
     //other parts of owr application
     static BiConsumer<Integer[], Long> helpMe = ((longs, stopNumber) -> {
         Arrays.stream(longs)
-                .parallel()
+                // .parallel() //as side effect we find more than one first
                 .filter(Objects::nonNull)
                 .takeWhile(firstPair -> {
                     Optional<Integer> opLong = Arrays.stream(longs)
