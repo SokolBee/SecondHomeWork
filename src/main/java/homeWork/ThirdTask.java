@@ -1,6 +1,7 @@
 package homeWork;
 
 
+import java.text.Collator;
 import java.util.*;
 
 public class ThirdTask {
@@ -57,6 +58,7 @@ public class ThirdTask {
                 subStrIndex++;
             }
         }
-        return String.copyValueOf(allMatches).equalsIgnoreCase(subString);
+
+        return String.copyValueOf(allMatches).equalsIgnoreCase(subString.toLowerCase(locale));
     }
 }
